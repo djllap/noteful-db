@@ -33,3 +33,5 @@ const UserService = {
       .update(newUserFields);
   }
 };
+
+module.exports = UserService;
