@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
+const folderRouter = require('./folders/folder-router');
+const noteRouter = require('./notes/note-router');
 
 const app = express();
 
@@ -17,11 +19,8 @@ app.use(helmet());
 app.use(cors());
 
 // Routes
-app.get('/', (req, res) => {
-  res.status(200);
-  res.send('Hello World');
-});
-
+app.use('/api/folders', folderRouter);
+app.use('/api/notes', noteRouter);
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
